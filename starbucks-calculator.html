@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Starbucks Calculator</title>
+	
+	<style>
+
+	body,
+	 {
+		text-align: center;
+		margin: auto;
+		background-color: #222;
+		font-variant: Georgia;
+	}
+
+	.more-centerness {
+		display: block;
+		text-align: center;
+		margin: 20px auto;
+	}
+
+	.main-img {
+		width:25%;
+	}
+
+	</style>
+</head>
+<body>
+
+	<img src="http://goo.gl/qLq92d" alt="Starbucks Logo" class="main-img more-centerness">
+	<p class="more-centerness">Learn how much Investing your Starbucks habit can boost your financial wealth!</p>
+	<input class="more-centerness" id="js-starbucksCounter" type="text" value="Starbucks a Week">
+	<input class="more-centerness" id="js-ageCounter" type="text" value="Age">
+	<button class="more-centerness" id="js-btn">Show me the Money!</button>
+	<h2 class="more-centerness" id="js-investment-prompt"></h2>
+
+<script>
+
+function wealthCalculator(){	
+  var payment = document.getElementById('js-starbucksCounter').value*3.90*52;   //cost of 5 venti lattes a week for a year
+  var lengthOfInvestment = 65-(document.getElementById('js-ageCounter').value);  //age until retirement
+
+  for (var i = 0; i <= lengthOfInvestment; i++) {	
+		var investmentReturn = (payment*(Math.pow(1.073, lengthOfInvestment)-1))/.073;	 // FV calculations with annual payments
+	};
+  document.getElementById('js-investment-prompt').innerHTML = 'For kicking your Starbucks habit, you\'ll make $' + investmentReturn.toFixed(2) + ' in ' + lengthOfInvestment + ' years!';  //inserts investment returns into HTML for the user
+}
+
+var btnClick = document.getElementById('js-btn');                                        
+
+btnClick.onclick = wealthCalculator;  //once the user inputs the information, run wealthCalculator
+
+</script>
+</body>
+</html>
